@@ -2,14 +2,15 @@ package com.example.demo.controller;
 
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class HomeController {
+public class UserController {
 
-    //@Autowired
-    //private UserRepository userRepository;
+    @Autowired
+    private UserService userService;
 
     @GetMapping
     public String index() {
@@ -26,13 +27,12 @@ public class HomeController {
         return user;
     }
 
-    /*@GetMapping("/post-user")
-    public String getUser() {
+    @GetMapping("/usera")
+    public User postUserNew() {
+        User user = new User(1l, "Teste");
+        userService.save(user);
+        return user;
+    }
 
-        userRepository.save(new User(0l, "Fulano"));
-
-        return "OK";
-
-    }*/
 
 }
