@@ -14,10 +14,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean isOlderInBrazil(int age) {
-        if (age >= 18)
-            return true;
-
-        return false;
+        return age >= 18;
     }
 
     @Override
