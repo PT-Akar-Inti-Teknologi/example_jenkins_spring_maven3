@@ -10,9 +10,7 @@ pipeline {
         }
       }
       steps {
-        sh './mvnw -Dmaven.test.failure.ignore=true install'
-        sh './mvnw test jacoco:report'
-        sh 'ls -al'
+        sh './mvnw clean test'
       }
     }
 
