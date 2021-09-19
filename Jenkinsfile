@@ -10,7 +10,8 @@ pipeline {
         }
       }
       steps {
-        sh './mvnw clean test'
+        sh './mvnw clean install -DskipTests'
+        sh './mvnw test jacoco:report'
       }
     }
 
