@@ -14,27 +14,27 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 public class UserRepositoryTest {
 
-    @Autowired
-    private TestEntityManager entityManager;
+	@Autowired
+	private TestEntityManager entityManager;
 
-    @Autowired
-    private UserRepository userRepository;
+	@Autowired
+	private UserRepository userRepository;
 
-    @Test
-    public void whenFindByName_thenReturnEmployee() {
+	@Test
+	public void whenFindByName_thenReturnEmployee() {
 
-        User user = new User(1l, "Fulano");
-        //entityManager.persist(user);
-        //entityManager.flush();
+		User user = new User(1l, "Fulano");
+		// entityManager.persist(user);
+		// entityManager.flush();
 
-        userRepository.save(user);
+		userRepository.save(user);
 
-        // when
-        User found = userRepository.getOne(1l);
+		// when
+		User found = userRepository.getOne(1l);
 
-        // then
-        assertThat(found.getName()).isEqualTo(user.getName());
+		// then
+		assertThat(found.getName()).isEqualTo(user.getName());
 
-    }
+	}
 
 }

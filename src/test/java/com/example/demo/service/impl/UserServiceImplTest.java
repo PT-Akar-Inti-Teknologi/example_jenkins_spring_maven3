@@ -25,34 +25,36 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 public class UserServiceImplTest {
 
-    @TestConfiguration
-    static class HomeServiceImplTestContextConfiguration {
-        @Bean
-        @Primary
-        public UserService userServiceTest() {
-            return new UserServiceImpl();
-        }
-    }
+	@TestConfiguration
+	static class HomeServiceImplTestContextConfiguration {
 
-    @MockBean
-    private UserRepository userRepository;
+		@Bean
+		@Primary
+		public UserService userServiceTest() {
+			return new UserServiceImpl();
+		}
 
-    @Autowired
-    private UserService userServiceTest;
+	}
 
-    @Test
-    public void whenAskIsOlderInBrazilFor15Age_thenReturnFalse() {
-        assertThat(userServiceTest.isOlderInBrazil(15)).isFalse();
-    }
+	@MockBean
+	private UserRepository userRepository;
 
-    @Test
-    public void whenAskIsOlderInBrazilFor18Age_thenReturnTrue() {
-        assertThat(userServiceTest.isOlderInBrazil(18)).isTrue();
-    }
+	@Autowired
+	private UserService userServiceTest;
 
-    @Test
-    public void whenAskIsOlderInBrazilFor31Age_thenReturnTrue() {
-        assertThat(userServiceTest.isOlderInBrazil(31)).isTrue();
-    }
+	@Test
+	public void whenAskIsOlderInBrazilFor15Age_thenReturnFalse() {
+		assertThat(userServiceTest.isOlderInBrazil(15)).isFalse();
+	}
+
+	@Test
+	public void whenAskIsOlderInBrazilFor18Age_thenReturnTrue() {
+		assertThat(userServiceTest.isOlderInBrazil(18)).isTrue();
+	}
+
+	@Test
+	public void whenAskIsOlderInBrazilFor31Age_thenReturnTrue() {
+		assertThat(userServiceTest.isOlderInBrazil(31)).isTrue();
+	}
 
 }

@@ -19,47 +19,41 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(UserController.class)
 public class UserControllerTest {
 
-    @Autowired
-    private MockMvc mvc;
+	@Autowired
+	private MockMvc mvc;
 
-    @MockBean
-    private UserService userService;
+	@MockBean
+	private UserService userService;
 
-    @Test
-    public void whenAccessGetUser_thenReturnUserObj() throws Exception {
+	@Test
+	public void whenAccessGetUser_thenReturnUserObj() throws Exception {
 
-        mvc.perform(get("/user").contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("name", Is.is("John")));
+		mvc.perform(get("/user").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+				.andExpect(jsonPath("name", Is.is("John")));
 
-    }
+	}
 
-    @Test
-    public void whenAccessIndex_thenReturnStringHelloWorld() throws Exception {
+	@Test
+	public void whenAccessIndex_thenReturnStringHelloWorld() throws Exception {
 
-        mvc.perform(get("/").contentType(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk())
-            .andExpect(content().string("Hello World"));
+		mvc.perform(get("/").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+				.andExpect(content().string("Hello World"));
 
-    }
+	}
 
-    @Test
-    public void whenAccessPostUser_thenReturnStringHelloWorld() throws Exception {
+	@Test
+	public void whenAccessPostUser_thenReturnStringHelloWorld() throws Exception {
 
-        mvc.perform(post("/user")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"name\":\"Teste\",\"id\":\"26\"}"))
-                    .andExpect(status().isOk())
-                    .andExpect(jsonPath("name", Is.is("Teste")));
+		mvc.perform(post("/user").contentType(MediaType.APPLICATION_JSON).content("{\"name\":\"Teste\",\"id\":\"26\"}"))
+				.andExpect(status().isOk()).andExpect(jsonPath("name", Is.is("Teste")));
 
-    }
+	}
 
-    @Test
-    public void whenAccessPostUserWithoutUserObj_thenReturnBadRequest() throws Exception {
+	@Test
+	public void whenAccessPostUserWithoutUserObj_thenReturnBadRequest() throws Exception {
 
-        mvc.perform(post("/user").contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isBadRequest());
+		mvc.perform(post("/user").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isBadRequest());
 
-    }
+	}
 
 }

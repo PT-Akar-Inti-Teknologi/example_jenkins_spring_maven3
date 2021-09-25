@@ -4,8 +4,8 @@ import com.example.demo.model.User;
 
 public interface UserService {
 
-    boolean isOlderInBrazil(int age);
+	boolean isOlderInBrazil(int age);
 
-    void save(User user);
+	void save(User user);
 
 }

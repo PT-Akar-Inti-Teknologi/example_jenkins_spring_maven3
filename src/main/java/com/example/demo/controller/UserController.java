@@ -9,30 +9,32 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+	private final UserService userService;
 
-    @GetMapping
-    public String index() {
-        return "Hello World";
-    }
+	public UserController(UserService userService) {
+		this.userService = userService;
+	}
 
-    @GetMapping("/user")
-    public User getUser() {
-        return new User(14l, "John");
-    }
+	@GetMapping
+	public String index() {
+		return "Hello World";
+	}
 
-    @PostMapping("/user")
-    public User postUser(@RequestBody User user) {
-        return user;
-    }
+	@GetMapping("/user")
+	public User getUser() {
+		return new User(14l, "John");
+	}
 
-    @GetMapping("/usera")
-    public User postUserNew() {
-        User user = new User(1l, "Teste");
-        userService.save(user);
-        return user;
-    }
+	@PostMapping("/user")
+	public User postUser(@RequestBody User user) {
+		return user;
+	}
 
+	@GetMapping("/usera")
+	public User postUserNew() {
+		User user = new User(1l, "Teste");
+		userService.save(user);
+		return user;
+	}
 
 }
